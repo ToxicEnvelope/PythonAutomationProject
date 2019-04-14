@@ -22,7 +22,7 @@ class EnrollmentNewMemberTest(BaseTest, unittest.TestCase):
     # test create new member sign up scenario
     def test_1_new_member_enroll_and_logout(self):
         sp = SignUpPage(self.driver)
-        ap = sp.register(
+        sp.register(
             fname=self.new_user['first'],
             lname=self.new_user['last'],
             phone=self.new_user['phone'],
@@ -30,9 +30,11 @@ class EnrollmentNewMemberTest(BaseTest, unittest.TestCase):
             password=self.new_user['password'],
             confpassword=self.new_user['confpassword']
         )
+        ap = AccountPage(self.driver)
         self.assertTrue(isinstance(ap, AccountPage),
                         "Assert failed!\nexp: {0}\nact: {1}".format(AccountPage, type(ap)))
-        lp = ap.logout()
+        ap.logout()
+        lp = LoginPage(self.driver)
 
         self.assertTrue(isinstance(lp, LoginPage),
                         "Assert failed!\nexp: {0}\nact: {1}".format(LoginPage, type(lp)))
@@ -40,11 +42,12 @@ class EnrollmentNewMemberTest(BaseTest, unittest.TestCase):
     # test login with new created user and assert greetings message
     def test_2_login_with_new_created_member_and_assert_greetings(self):
         lp = LoginPage(self.driver)
-        ap = lp.login(
+        lp.login(
             username=self.new_user['email'],
             password=self.new_user['password'],
             is_remember=True
         )
+        ap = AccountPage(self.driver)
         msg = ap.get_greetings()
 
         self.assertEqual(msg, self.exp_greet_msg,

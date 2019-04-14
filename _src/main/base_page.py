@@ -11,15 +11,17 @@ class BasePage:
 
     BASE_URL = "https://www.phptravels.net"
     _driver = None
-    logger = Logger(__name__)
+
     '''
         CONSTRUCTOR
         :param -> driver : WebDriver
     '''
-    def __init__(self, driver):
+    def __init__(self, driver, namespace):
         try:
+            self.logger = Logger(namespace)
             if isinstance(driver, WebDriver):
                 self._driver = driver
+                self.logger.info('{0} - __init__ -> {1}'.format(namespace, self._driver))
         except Exception as err:
             raise err
 

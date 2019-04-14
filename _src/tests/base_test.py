@@ -19,4 +19,3 @@ class BaseTest(unittest.TestCase):
         self.logger.info('{0} calling `tearDown` method...'.format(__name__))
         if self.driver:
             self.driver.quit()
-

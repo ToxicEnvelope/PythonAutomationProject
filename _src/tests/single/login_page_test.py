@@ -27,7 +27,6 @@ class LoginPageTest(BaseTest, unittest.TestCase):
         finally:
             self.logger.info('{0} `test_user_invalid_login` - test end'.format(__name__))
 
-
     # test a valid user login scenario
     def test_user_valid_login(self):
         try:
@@ -36,7 +35,8 @@ class LoginPageTest(BaseTest, unittest.TestCase):
             lp = LoginPage(self.driver)
             lp.login(self.valid_user[0], self.valid_user[1], False)
 
-            lp.get_success_msg()
+            msg = lp.get_success_msg()
+            print(msg)
 
             ap = AccountPage(self.driver)
             greet = ap.get_greetings()

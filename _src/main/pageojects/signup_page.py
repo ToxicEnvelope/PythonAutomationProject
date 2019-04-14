@@ -2,12 +2,11 @@
 from _src.main.base_page import BasePage
 from _src.main.locators.signup_page_locator import SignUpPageLocators
 
+
 class SignUpPage(BasePage, SignUpPageLocators):
 
-
     def __init__(self, driver):
-        self.logger.info('{0} - __init__ -> {1}'.format(__name__, driver))
-        super(SignUpPage, self).__init__(driver)
+        super(SignUpPage, self).__init__(driver, __name__)
         self.URL = self.BASE_URL + "/register"
         self.logger.debug('page url -> {0}'.format(self.URL))
         self.navigate_to(self.URL)
