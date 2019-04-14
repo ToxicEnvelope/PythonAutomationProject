@@ -5,8 +5,7 @@ from _src.main.locators.account_page_locators import AccountPageLocators
 class AccountPage(BasePage, AccountPageLocators):
 
     def __init__(self, driver):
-        self.logger.info('{0} - __init__ -> {1}'.format(__name__, driver))
-        super(AccountPage, self).__init__(driver)
+        super(AccountPage, self).__init__(driver, __name__)
         self.URL = self.BASE_URL + "/account"
         self.logger.debug('page url -> {0}'.format(self.URL))
         self.navigate_to(self.URL)

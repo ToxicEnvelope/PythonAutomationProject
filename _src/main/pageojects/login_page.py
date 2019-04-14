@@ -6,8 +6,7 @@ from _src.main.locators.login_page_locators import LoginPageLocators
 class LoginPage(BasePage, LoginPageLocators):
 
     def __init__(self, driver):
-        self.logger.info('{0} - __init__ -> {1}'.format(__name__, driver))
-        super(LoginPage, self).__init__(driver)
+        super(LoginPage, self).__init__(driver, __name__)
         self.URL = '{domain}/{uri}'.format(domain=self.BASE_URL, uri=self.URL)
         self.logger.debug('page url -> {0}'.format(self.URL))
         self.navigate_to(self.URL)

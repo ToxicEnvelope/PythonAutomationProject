@@ -45,7 +45,6 @@ class SignUpPageTest(BaseTest, unittest.TestCase):
         finally:
             self.logger.info('{0} `test_exists_user_register` - test end'.format(__name__))
 
-
     # test new user register
     def test_new_user_register(self):
         try:

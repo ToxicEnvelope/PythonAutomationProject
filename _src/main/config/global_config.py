@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os
+from os import getcwd, path
 from time import time
 
 
@@ -7,17 +7,18 @@ class GlobalConfig:
 
     @staticmethod
     def get_logs_dir():
-        root = os.path.expanduser('~/Desktop/Git/NewPythonProject')
+        root = path.dirname(path.dirname(path.dirname(getcwd())))
+        print(root)
         return '{0}/_src/logs'.format(root)
 
     @staticmethod
     def get_resources_dir():
-        root = os.path.expanduser('~/Desktop/Git/NewPythonProject')
+        root = path.dirname(path.dirname(path.dirname(getcwd())))
         return '{0}/_src/tests/resources'.format(root)
 
     @staticmethod
     def get_bin_dir():
-        root = os.path.expanduser('C:\\Users\\yahav.hoffman\\Desktop\Git\\NewPythonProject')
+        root = path.dirname(path.dirname(path.dirname(getcwd())))
         return '{0}/bin'.format(root)
 
     @staticmethod
